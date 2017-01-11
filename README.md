@@ -1,1 +1,1 @@
-# Academic-Network-Security
+# Academic-Projects
