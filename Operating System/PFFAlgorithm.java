@@ -3,9 +3,7 @@
  * N11489385
  * CS6233-Operating System
  */
-
 import java.util.Scanner;
-
 
 public class PFFAlgorithm {
 	private int P;
@@ -21,7 +19,6 @@ public class PFFAlgorithm {
 	private int MaxFrameValue = 0;
 	
 	PFFAlgorithm(int P, int f,Scanner file){
-		
 		this.P = P;
 		this.F = f;
 		this.file = file;
@@ -32,10 +29,8 @@ public class PFFAlgorithm {
 	}
 	
 	void PageFaultCalculation(){
-		
 		file.nextLine();//Because the first line is indication, not page references
 		while(file.hasNext()){
-			
 			CurrentFrameValue=0;
 			int page = file.nextInt();
 			if(PageState[page].inWorkingSet==1){
@@ -46,8 +41,6 @@ public class PFFAlgorithm {
 					pageFault++;
 					PageState[page].inWorkingSet = 1;
 					PageState[page].state=1;
-					
-					
 					if((currentTravesalRecord - lastTravesalRecord) > F){
 						PageKickOut();
 					}
@@ -58,15 +51,11 @@ public class PFFAlgorithm {
 			calCurrentFrameNum();
 			calMinFrameFrequency();
 			calMaxFrameValue();
-			
-			
 		}
-		
 	}
 	
 	void PageKickOut(){
 		for(int i = 0; i < PageState.length; i++){
-		
 			if(PageState[i].inWorkingSet == 1 && PageState[i].state == 0){
 				PageState[i].inWorkingSet = 0;
 			}
@@ -78,6 +67,7 @@ public class PFFAlgorithm {
 			PageState[i].state = 0;
 		}
 	}
+	
 	void calCurrentFrameNum(){
 		for(int i = 0; i < PageState.length; i++){
 			if(PageState[i].inWorkingSet == 1)

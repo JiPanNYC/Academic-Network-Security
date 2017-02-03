@@ -4,7 +4,6 @@ import os
 import time
 from scapy.all import *
 
-
 def main():
     layer_broadcast = "ff:ff:ff:ff:ff:ff"
     conf.checkIPaddr = False
@@ -24,7 +23,6 @@ def main():
                 time.sleep(1)
 
     dhcp_starvation()
-
 
 if __name__ == "__main__":
     main()

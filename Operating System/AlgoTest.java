@@ -3,20 +3,16 @@
  * N11489385
  * CS6233-Operating System
  */
-
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-
 public class AlgoTest {
 
-	
 	public static void main(String args[]) throws FileNotFoundException{	
 		PageRefGeneration.generate();
 		int P = 10000;
-		
+
 		// 5 Tests for the PFF Algorithm
-		
 		int F1 = 20;		
 		PFFAlgorithm test1 = new PFFAlgorithm( P, F1, new Scanner(PageRefGeneration.returnFile()));
 		test1.PageFaultCalculation();
@@ -60,9 +56,7 @@ public class AlgoTest {
 		System.out.println("PFF--> The MAX number of Frames is: "+test5.returnMaxFrameValue());
 		System.out.println("PFF--> The page fault is: "+test5.returnPageFault());
 		System.out.println("PFF--> The page fault rate is: "+test5.returnFaultRate()*100+"%");
-		System.out.println();
-	
-		
+		System.out.println();	
 			
 		// 5 Tests for the VSWS Algorithm
 		int L1 = 50;
@@ -136,6 +130,5 @@ public class AlgoTest {
 		System.out.println("Comments: We also can know that the VSWS can improve the performance because PFF has the shortcoming that it doesn't perform well during transient periods. ");
 		System.out.println();
 		System.out.println("Finished!");
-	
 }
 }

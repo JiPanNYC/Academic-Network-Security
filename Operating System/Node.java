@@ -3,12 +3,8 @@
  * N11489385
  * CS6233-Operating System
  */
-
 public class Node {
-	
+	Node(){}
 	int inWorkingSet = 0;
-	int state=0;
-	Node(){
-		
-	}
+	int state = 0;
 }

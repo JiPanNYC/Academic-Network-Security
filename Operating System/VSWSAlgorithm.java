@@ -3,9 +3,7 @@
  * N11489385
  * CS6233-Operating System
  */
-
 import java.util.Scanner;
-
 
 public class VSWSAlgorithm {
 	private int P;	
@@ -23,9 +21,7 @@ public class VSWSAlgorithm {
 	private int MinFramesFrequency = 0;
 	private int MaxFrameValue = 0;
 	
-	
-	VSWSAlgorithm(int P, int l, int m, int q, Scanner file){
-		
+	VSWSAlgorithm(int P, int l, int m, int q, Scanner file){	
 		this.P = P;
 		this.file = file;
 		this.L = l;
@@ -37,52 +33,41 @@ public class VSWSAlgorithm {
 		}
 	}
 	
-	void PageFaultCalculation(){
-		
+	void PageFaultCalculation(){	
 		file.nextLine();//Because the first line is indication, not page references
-		
 		while(file.hasNext()){
 			CurrentFrameValue=0;
 			int page = file.nextInt();
 			if(PageState[page].inWorkingSet==1){
-				PageState[page].state=1;
-				
+				PageState[page].state=1;	
 			}
-			
 			else if(PageState[page].inWorkingSet == 0){
 					pageFault++;	
 					PageState[page].inWorkingSet = 1;					
 					PageState[page].state=1;		
-					}
-			
+			}
 			currentTravesalRecord++;
 			indexOfLM++;
-			
+
 			if(indexOfLM==L){
 				pageStateReset();
 				lastPageFault = pageFault;
 			}
-			
-			if(indexOfLM>=M)
-				if(pageFault-lastPageFault>=Q){
-					PageKickOut();
-					indexOfLM=0;
-				}
-			
+
+			if(indexOfLM>=M && pageFault-lastPageFault>=Q){
+				PageKickOut();
+				indexOfLM=0;
+			}
 			calCurrentFrameNum();
 			calMinFrameFrequency();
 			calMaxFrameValue();
-			
 			}
-			
-			
-		}
+	}
 		
 	
 	
 	void PageKickOut(){
 		for(int i = 0; i < PageState.length; i++){
-		
 			if(PageState[i].inWorkingSet == 1 && PageState[i].state == 0){
 				PageState[i].inWorkingSet = 0;
 			}
@@ -127,5 +112,4 @@ public class VSWSAlgorithm {
 	double returnFaultRate(){
 		return (double) pageFault/currentTravesalRecord;
 	}
-	
 }
